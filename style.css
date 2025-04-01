@@ -1,69 +1,66 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #6c98fe;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
-h1 {
-  color: #333;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
-input, button {
-  padding: 10px;
-  margin: 10px;
+input {
+    padding: 5px;
+    margin: 10px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
-li {
-  background-color: #fff;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #ccc;
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
-#digitalBoard {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  width: 50%; /* La mitad del ancho de la pantalla */
-  height: 50%; /* La mitad de la altura de la pantalla */
-  margin: auto;
-  position: relative;
-  color: #333;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  min-height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
+.product {
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-#digitalBoard.winner {
-  background-color: #FFD700; /* Color dorado */
-  color: #fff;
-  font-size: 24px;
-  width: 50%; /* La mitad del ancho de la pantalla */
-  height: 50%; /* La mitad de la altura de la pantalla */
-  margin: auto;
-  position: relative;
+.hidden {
+    display: none;
 }
 
-#digitalBoard.winner::after {
-  content: "🎉🎉🎁🎁";
-  position: absolute;
-  font-size: 30px;
-  top: -30px;
-  left: calc(50% - 45px);
-  animation: sparkle 1s infinite alternate;
+/* Modal de carrito */
+#cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes sparkle {
-  from {
+.cart-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
