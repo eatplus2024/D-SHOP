@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productos = [
-        { id: 1, nombre: "Producto 1", precio: "$10", imagen: "https://via.placeholder.com/150" },
+        { id: 1, nombre: "Producto 1", precio: "$10", imagen: "https://static.wixstatic.com/media/a4f6c8_f9c96ee36ee747a2a8e8da2d1ec9b0a1~mv2.png/v1/fill/w_198,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Turitaxis.png" },
         { id: 2, nombre: "Producto 2", precio: "$20", imagen: "https://via.placeholder.com/150" },
         { id: 3, nombre: "Producto 3", precio: "$30", imagen: "https://via.placeholder.com/150" },
         { id: 4, nombre: "Producto 4", precio: "$40", imagen: "https://via.placeholder.com/150" },
