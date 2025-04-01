@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+    <title>Mi Tienda Online</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Tienda Online</h1>
-        <input type="text" id="search" placeholder="Buscar productos...">
-        <button id="cart-btn">Carrito (<span id="cart-count">0</span>)</button>
+        <div class="logo">MiTienda</div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Carrito</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <main id="product-list">
-        <!-- Productos generados con JavaScript -->
+
+    <section class="hero">
+        <h1>Bienvenido a Mi Tienda Online</h1>
+        <p>Descubre las mejores ofertas en productos de calidad.</p>
+        <button>Ver Ofertas</button>
+    </section>
+
+    <main>
+        <section class="productos">
+            <!-- Los productos se generarán dinámicamente con JavaScript -->
+        </section>
     </main>
 
-    <div id="cart-modal" class="hidden">
-        <div class="cart-content">
-            <h2>Carrito de Compras</h2>
-            <ul id="cart-items"></ul>
-            <button id="close-cart">Cerrar</button>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
