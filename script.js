@@ -1,48 +1,56 @@
-let participants = [];
+document.addEventListener("DOMContentLoaded", () => {
+    const products = [
+        { id: 1, name: "Producto 1", price: 10 },
+        { id: 2, name: "Producto 2", price: 20 },
+        { id: 3, name: "Producto 3", price: 30 }
+    ];
 
-function addParticipant() {
-    const name = document.getElementById('name').value;
-    if (name) {
-        participants.push(name);
-        updateParticipantsList();
-        document.getElementById('name').value = '';
-    } else {
-        alert("Por favor, ingresa un nombre.");
+    const productList = document.getElementById("product-list");
+    const cartBtn = document.getElementById("cart-btn");
+    const cartModal = document.getElementById("cart-modal");
+    const closeCart = document.getElementById("close-cart");
+    const cartItems = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+
+    let cart = [];
+
+    function renderProducts() {
+        productList.innerHTML = "";
+        products.forEach(product => {
+            const productElement = document.createElement("div");
+            productElement.classList.add("product");
+            productElement.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Precio: $${product.price}</p>
+                <button onclick="addToCart(${product.id})">Agregar al carrito</button>
+            `;
+            productList.appendChild(productElement);
+        });
     }
-}
 
-function updateParticipantsList() {
-    const list = document.getElementById('participantsList');
-    list.innerHTML = '';
-    participants.forEach(participant => {
-        const li = document.createElement('li');
-        li.textContent = participant;
-        list.appendChild(li);
+    window.addToCart = (id) => {
+        const product = products.find(p => p.id === id);
+        cart.push(product);
+        updateCart();
+    };
+
+    function updateCart() {
+        cartItems.innerHTML = "";
+        cart.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.textContent = `${item.name} - $${item.price}`;
+            cartItems.appendChild(li);
+        });
+        cartCount.textContent = cart.length;
+    }
+
+    cartBtn.addEventListener("click", () => {
+        cartModal.classList.remove("hidden");
     });
-}
 
-function pickWinner() {
-    if (participants.length === 0) {
-        alert("No hay participantes para el sorteo.");
-        return;
-    }
+    closeCart.addEventListener("click", () => {
+        cartModal.classList.add("hidden");
+    });
 
-    const digitalBoard = document.getElementById('digitalBoard');
-    let currentIndex = 0;
-    const speed = 100; // Velocidad de cambio de nombre en milisegundos
-    const duration = 5000; // Duración total del efecto en milisegundos
-
-    digitalBoard.classList.remove('winner');
-
-    const interval = setInterval(() => {
-        digitalBoard.textContent = participants[currentIndex];
-        currentIndex = (currentIndex + 1) % participants.length;
-    }, speed);
-
-    setTimeout(() => {
-        clearInterval(interval);
-        const winnerIndex = Math.floor(Math.random() * participants.length);
-        digitalBoard.textContent = `¡El ganador es: ${participants[winnerIndex]}!`;
-        digitalBoard.classList.add('winner');
-    }, duration);
-}
+    renderProducts();
+});
