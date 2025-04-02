@@ -3,39 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Tienda</title>
+    <title>Tienda Online - Inspirada en Temu</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">SuperTienda</div>
-        <input type="text" id="busqueda" placeholder="Buscar productos...">
-        <nav>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">
+            <h1>Tienda Online</h1>
+        </div>
+        <nav class="navbar">
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Categorías</a></li>
                 <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Carrito (<span id="contador-carrito">0</span>)</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar productos...">
+            <button>Buscar</button>
+        </div>
     </header>
 
-    <section class="banner">
-        <h1>Bienvenido a Super Tienda</h1>
-        <p>Descubre descuentos exclusivos en miles de productos</p>
-        <button id="ver-ofertas">Ver Ofertas</button>
+    <!-- Sección de Categorías -->
+    <section class="categories">
+        <h2>Categorías Populares</h2>
+        <div class="category-list">
+            <div class="category-item">Electrónica</div>
+            <div class="category-item">Ropa</div>
+            <div class="category-item">Hogar</div>
+            <div class="category-item">Deportes</div>
+        </div>
     </section>
 
-    <main>
-        <section class="productos">
-            <!-- Se generan los productos dinámicamente con JavaScript -->
-        </section>
-    </main>
+    <!-- Sección de Productos Destacados -->
+    <section class="featured-products">
+        <h2>Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Producto 1">
+                <h3>Producto 1</h3>
+                <p>$9.99</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Producto 2">
+                <h3>Producto 2</h3>
+                <p>$19.99</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150" alt="Producto 3">
+                <h3>Producto 3</h3>
+                <p>$29.99</p>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Super Tienda - Todos los derechos reservados.</p>
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <p>&copy; 2023 Tienda Online. Todos los derechos reservados.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
