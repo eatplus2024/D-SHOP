@@ -99,6 +99,44 @@ body {
     border-radius: 8px;
 }
 
+.add-to-cart {
+    padding: 5px 10px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#carrito {
+    list-style: none;
+    padding: 0;
+}
+
+#carrito li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+#total {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
 .footer {
     text-align: center;
     padding: 10px;
