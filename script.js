@@ -1,40 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const productos = [
-        { id: 1, nombre: "Zapatos deportivos", precio: "$50", imagen: "https://via.placeholder.com/150" },
-        { id: 2, nombre: "Camiseta negra", precio: "$20", imagen: "https://via.placeholder.com/150" },
-        { id: 3, nombre: "Reloj elegante", precio: "$80", imagen: "https://via.placeholder.com/150" }
-    ];
+// script.js
 
-    const contenedorProductos = document.querySelector('.productos');
-    const contadorCarrito = document.getElementById("contador-carrito");
-    let carrito = 0;
+// Función para filtrar productos por nombre
+function filtrarProductos() {
+    const input = document.querySelector('.search-bar input');
+    const filtro = input.value.toLowerCase();
+    const productos = document.querySelectorAll('.product-card');
 
     productos.forEach(producto => {
-        const divProducto = document.createElement('div');
-        divProducto.classList.add('producto');
-        divProducto.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>Precio: ${producto.precio}</p>
-            <button class="btn-agregar">Añadir al carrito</button>
-        `;
-        contenedorProductos.appendChild(divProducto);
+        const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+        if (nombreProducto.includes(filtro)) {
+            producto.style.display = '';
+        } else {
+            producto.style.display = 'none';
+        }
+    });
+}
+
+// Función para resaltar categorías
+function resaltarCategoria(event) {
+    const categorias = document.querySelectorAll('.category-item');
+    categorias.forEach(categoria => categoria.style.backgroundColor = '#007bff');
+
+    const categoriaSeleccionada = event.target;
+    categoriaSeleccionada.style.backgroundColor = '#ff6f61';
+}
+
+// Carrito de compras básico
+let carrito = [];
+
+function agregarAlCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    actualizarCarrito();
+}
+
+function actualizarCarrito() {
+    const carritoElemento = document.getElementById('carrito');
+    const totalElemento = document.getElementById('total');
+
+    carritoElemento.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio}`;
+        carritoElemento.appendChild(li);
+        total += item.precio;
     });
 
-    document.querySelectorAll(".btn-agregar").forEach(button => {
-        button.addEventListener("click", () => {
-            carrito++;
-            contadorCarrito.textContent = carrito;
+    totalElemento.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+// Asignar eventos
+document.addEventListener('DOMContentLoaded', () => {
+    // Evento para la barra de búsqueda
+    const searchInput = document.querySelector('.search-bar input');
+    searchInput.addEventListener('input', filtrarProductos);
+
+    // Eventos para las categorías
+    const categorias = document.querySelectorAll('.category-item');
+    categorias.forEach(categoria => {
+        categoria.addEventListener('click', resaltarCategoria);
+    });
+
+    // Eventos para agregar productos al carrito
+    const botonesAgregar = document.querySelectorAll('.product-card button');
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const card = boton.closest('.product-card');
+            const nombre = card.querySelector('h3').textContent;
+            const precioTexto = card.querySelector('p').textContent;
+            const precio = parseFloat(precioTexto.replace('$', ''));
+            agregarAlCarrito(nombre, precio);
         });
-    });
-
-    // Animación del botón de ofertas
-    const botonOfertas = document.getElementById("ver-ofertas");
-    botonOfertas.addEventListener("mouseover", () => {
-        botonOfertas.style.transform = "scale(1.1)";
-    });
-
-    botonOfertas.addEventListener("mouseout", () => {
-        botonOfertas.style.transform = "scale(1)";
     });
 });
