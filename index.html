@@ -1,76 +1,79 @@
-// script.js
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">
+            <h1>Tienda Online</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar productos...">
+            <button>Buscar</button>
+        </div>
+    </header>
 
-// Función para filtrar productos por nombre
-function filtrarProductos() {
-    const input = document.querySelector('.search-bar input');
-    const filtro = input.value.toLowerCase();
-    const productos = document.querySelectorAll('.product-card');
+    <!-- Sección de Categorías -->
+    <section class="categories">
+        <h2>Categorías Populares</h2>
+        <div class="category-list">
+            <div class="category-item">Electrónica</div>
+            <div class="category-item">Ropa</div>
+            <div class="category-item">Hogar</div>
+            <div class="category-item">Deportes</div>
+        </div>
+    </section>
 
-    productos.forEach(producto => {
-        const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
-        if (nombreProducto.includes(filtro)) {
-            producto.style.display = '';
-        } else {
-            producto.style.display = 'none';
-        }
-    });
-}
+    <!-- Sección de Productos Destacados -->
+    <section class="featured-products">
+        <h2>Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x300/?electronics" alt="Producto 1">
+                <h3>Producto 1</h3>
+                <p>$9.99</p>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x300/?clothing" alt="Producto 2">
+                <h3>Producto 2</h3>
+                <p>$19.99</p>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x300/?home" alt="Producto 3">
+                <h3>Producto 3</h3>
+                <p>$29.99</p>
+                <button class="add-to-cart">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
 
-// Función para resaltar categorías
-function resaltarCategoria(event) {
-    const categorias = document.querySelectorAll('.category-item');
-    categorias.forEach(categoria => categoria.style.backgroundColor = '#007bff');
+    <!-- Carrito de Compras -->
+    <section class="cart">
+        <h2>Carrito de Compras</h2>
+        <ul id="carrito"></ul>
+        <p id="total">Total: $0.00</p>
+    </section>
 
-    const categoriaSeleccionada = event.target;
-    categoriaSeleccionada.style.backgroundColor = '#ff6f61';
-}
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <p>&copy; 2023 Tienda Online. Todos los derechos reservados.</p>
+    </footer>
 
-// Carrito de compras básico
-let carrito = [];
-
-function agregarAlCarrito(nombre, precio) {
-    carrito.push({ nombre, precio });
-    actualizarCarrito();
-}
-
-function actualizarCarrito() {
-    const carritoElemento = document.getElementById('carrito');
-    const totalElemento = document.getElementById('total');
-
-    carritoElemento.innerHTML = '';
-    let total = 0;
-
-    carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nombre} - $${item.precio}`;
-        carritoElemento.appendChild(li);
-        total += item.precio;
-    });
-
-    totalElemento.textContent = `Total: $${total.toFixed(2)}`;
-}
-
-// Asignar eventos
-document.addEventListener('DOMContentLoaded', () => {
-    // Evento para la barra de búsqueda
-    const searchInput = document.querySelector('.search-bar input');
-    searchInput.addEventListener('input', filtrarProductos);
-
-    // Eventos para las categorías
-    const categorias = document.querySelectorAll('.category-item');
-    categorias.forEach(categoria => {
-        categoria.addEventListener('click', resaltarCategoria);
-    });
-
-    // Eventos para agregar productos al carrito
-    const botonesAgregar = document.querySelectorAll('.product-card button');
-    botonesAgregar.forEach(boton => {
-        boton.addEventListener('click', () => {
-            const card = boton.closest('.product-card');
-            const nombre = card.querySelector('h3').textContent;
-            const precioTexto = card.querySelector('p').textContent;
-            const precio = parseFloat(precioTexto.replace('$', ''));
-            agregarAlCarrito(nombre, precio);
-        });
-    });
-});
+    <script src="script.js"></script>
+</body>
+</html>
